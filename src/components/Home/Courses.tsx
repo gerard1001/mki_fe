@@ -1,0 +1,152 @@
+import React, { useEffect } from "react";
+import Slider from "react-slick";
+import { HiChevronRight, HiChevronLeft } from "react-icons/hi2";
+import { FaHeart, FaMessage } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { posts } from "../../utils/dummies";
+import { Button } from "antd";
+import "../../assets/styles/slick-courses/slick.styles.css";
+import "../../assets/styles/slick-courses/slick-theme.styles.css";
+
+const Courses: React.FC = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+  const settings = {
+    dots: true,
+    speed: 700,
+    infinite: true,
+    centerPadding: "10px",
+    rows: 2,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  const PreviousBtn = (props: any) => {
+    return (
+      <div className={props.className} onClick={props.onClick}>
+        <HiChevronLeft className="text-slate-600 text-lg" />
+      </div>
+    );
+  };
+
+  const NextBtn = (props: any) => {
+    return (
+      <div className={props.className} onClick={props.onClick}>
+        <HiChevronRight className="text-slate-600 text-lg" />
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <div className="h-screen">
+        <div
+          className="relative flex items-center mt-5 w-[90%] mx-auto"
+          data-aos="fade-up"
+        >
+          <div className="flex-grow border-t border-gray-400"></div>
+          <h1 className="text-4xl uppercase text-center text-gray-700 flex-shrink mx-6">
+            Recent free courses
+          </h1>
+          <div className="flex-grow border-t border-gray-400"></div>
+        </div>
+        <div data-aos="fade-up">
+          <Slider
+            prevArrow={<PreviousBtn />}
+            nextArrow={<NextBtn />}
+            {...settings}
+            className="courses w-[90%] max-w-[1200px] mx-auto flex !gap-2 flex-wrap content-center justify-center"
+          >
+            {posts.map((values) => {
+              return (
+                <div
+                  className="max-w-xs min-h-[396px] rounded overflow-hidden shadow-sm hover:shadow-md p-2 relative"
+                  key={values.id}
+                >
+                  <div
+                    className="relative w-full"
+                    style={{
+                      backgroundImage: `url(${values.picture})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      height: "200px",
+                      width: "100%",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <div
+                      className={`absolute w-[50px] aspect-square rounded-[50%] flex flex-col items-center justify-center text-zinc-100 left-[90%] top-[78%] -translate-x-[50%] ${
+                        values.fees === "Free" ? "bg-sky-700" : "bg-teal-700"
+                      }`}
+                    >
+                      {values.fees}
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-start gap-3 pt-2">
+                    <div className="flex items-center text-slate-500">
+                      <FaStar className="text-sky-700 text-xl mr-1" />
+                      <span className="font-semibold">{values.reviews}</span>
+                      (45)
+                    </div>
+                    <div className="flex items-center text-slate-500">
+                      <FaHeart className="text-fuchsia-400 text-xl mr-1" />
+                      <span className="font-semibold">{values.likes}</span>
+                    </div>
+                    <div className="flex items-center text-slate-500">
+                      <FaMessage className="text-sky-500 text-xl mr-1" />
+                      <span className="font-semibold">{values.comments}</span>
+                    </div>
+                  </div>
+                  <div className="px-6 py-4 pb-10">
+                    <div className="font-bold text-xl mb-2 text-slate-700 line-clamp-3">
+                      {values.title}
+                    </div>
+                  </div>
+                  <div className="absolute left-[50%] bottom-0 -translate-x-[50%] px-6 py-4 w-full flex flex-col items-center">
+                    <Button className="uppercase font-semibold border-[1px] border-teal-700 text-teal-700">
+                      Take course
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </Slider>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Courses;
