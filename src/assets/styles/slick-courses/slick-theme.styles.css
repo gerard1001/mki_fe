@@ -42,6 +42,7 @@
   border: none;
   outline: none;
   background: #bababa8d;
+  display: none;
   opacity: 1;
   border-radius: 50%;
   z-index: 1;

@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className={`flex items-center bg-slate-100 mb-0`}>
+      <div className={`lg:flex items-center bg-slate-100 mb-0 hidden`}>
         <div className="flex flex-col items-center justify-center w-fit px-10">
           {<SlSocialVkontakte className="text-[80px] text-sky-600" />}
         </div>

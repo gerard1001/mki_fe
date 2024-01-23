@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi2";
 import { FaHeart, FaMessage } from "react-icons/fa6";
@@ -14,6 +14,7 @@ const Courses: React.FC = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+  const [index, setIndex] = useState(0);
   const settings = {
     dots: true,
     speed: 700,
@@ -25,6 +26,31 @@ const Courses: React.FC = () => {
     slidesToScroll: 4,
     initialSlide: 0,
     pauseOnHover: true,
+    afterChange: (index: number) => {
+      console.log("Active index:", index);
+      setIndex(index);
+    },
+    appendDots: (dots: any) => (
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "0px",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i: any) => (
+      <div
+        className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+          i === index / 4
+            ? "bg-teal-700 text-zinc-100"
+            : "bg-zinc-100 text-teal-700"
+        }`}
+      >
+        {i + 1}
+      </div>
+    ),
     responsive: [
       {
         breakpoint: 1024,
@@ -33,14 +59,36 @@ const Courses: React.FC = () => {
           slidesToScroll: 3,
           infinite: true,
           dots: true,
+          customPaging: (i: any) => (
+            <div
+              className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+                i === index / 3
+                  ? "bg-teal-700 text-zinc-100"
+                  : "bg-zinc-100 text-teal-700"
+              }`}
+            >
+              {i + 1}
+            </div>
+          ),
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 820,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          customPaging: (i: any) => (
+            <div
+              className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+                i === index / 2
+                  ? "bg-teal-700 text-zinc-100"
+                  : "bg-zinc-100 text-teal-700"
+              }`}
+            >
+              {i + 1}
+            </div>
+          ),
         },
       },
       {
@@ -48,6 +96,17 @@ const Courses: React.FC = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          customPaging: (i: any) => (
+            <div
+              className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+                i === index
+                  ? "bg-teal-700 text-zinc-100"
+                  : "bg-zinc-100 text-teal-700"
+              }`}
+            >
+              {i + 1}
+            </div>
+          ),
         },
       },
     ],
