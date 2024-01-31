@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { SlSocialVkontakte } from "react-icons/sl";
 import { FaMap, FaPaperPlane, FaPhoneAlt } from "react-icons/fa";
 import { MdArrowDropDown } from "react-icons/md";
 import { BsGlobe2 } from "react-icons/bs";
