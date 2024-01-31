@@ -42,10 +42,10 @@ const Courses: React.FC = () => {
     ),
     customPaging: (i: any) => (
       <div
-        className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+        className={`border-[1px] border-[#0284c7] rounded-[4px] flex items-center gap-5 justify-center w-7 ${
           i === index / 4
-            ? "bg-teal-700 text-zinc-100"
-            : "bg-zinc-100 text-teal-700"
+            ? "bg-[#0284c7] text-zinc-100"
+            : "bg-zinc-100 text-[#0284c7]"
         }`}
       >
         {i + 1}
@@ -61,10 +61,10 @@ const Courses: React.FC = () => {
           dots: true,
           customPaging: (i: any) => (
             <div
-              className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+              className={`border-[1px] border-[#0284c7] rounded-[4px] flex items-center gap-5 justify-center w-7 ${
                 i === index / 3
-                  ? "bg-teal-700 text-zinc-100"
-                  : "bg-zinc-100 text-teal-700"
+                  ? "bg-[#0284c7] text-zinc-100"
+                  : "bg-zinc-100 text-[#0284c7]"
               }`}
             >
               {i + 1}
@@ -80,10 +80,10 @@ const Courses: React.FC = () => {
           initialSlide: 2,
           customPaging: (i: any) => (
             <div
-              className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+              className={`border-[1px] border-[#0284c7] rounded-[4px] flex items-center gap-5 justify-center w-7 ${
                 i === index / 2
-                  ? "bg-teal-700 text-zinc-100"
-                  : "bg-zinc-100 text-teal-700"
+                  ? "bg-[#0284c7] text-zinc-100"
+                  : "bg-zinc-100 text-[#0284c7]"
               }`}
             >
               {i + 1}
@@ -98,10 +98,10 @@ const Courses: React.FC = () => {
           slidesToScroll: 1,
           customPaging: (i: any) => (
             <div
-              className={`border-[1px] border-teal-700 text-teal-700 rounded-[4px] flex items-center gap-5 justify-center w-7 ${
+              className={`border-[1px] border-[#0284c7] rounded-[4px] flex items-center gap-5 justify-center w-7 ${
                 i === index
-                  ? "bg-teal-700 text-zinc-100"
-                  : "bg-zinc-100 text-teal-700"
+                  ? "bg-[#0284c7] text-zinc-100"
+                  : "bg-zinc-100 text-[#0284c7]"
               }`}
             >
               {i + 1}
@@ -145,7 +145,7 @@ const Courses: React.FC = () => {
             prevArrow={<PreviousBtn />}
             nextArrow={<NextBtn />}
             {...settings}
-            className="courses w-[90%] max-w-[1200px] mx-auto flex !gap-2 flex-wrap content-center justify-center"
+            className="courses w-[95%] max-w-[1200px] mx-auto flex gap-2 flex-wrap content-center justify-center"
           >
             {posts.map((values) => {
               return (
@@ -167,7 +167,9 @@ const Courses: React.FC = () => {
                   >
                     <div
                       className={`absolute w-[50px] aspect-square rounded-[50%] flex flex-col items-center justify-center text-zinc-100 left-[90%] top-[78%] -translate-x-[50%] ${
-                        values.fees === "Free" ? "bg-sky-700" : "bg-teal-700"
+                        values.fees !== "Free"
+                          ? "bg-yellow-400"
+                          : "bg-[#0284c7]"
                       }`}
                     >
                       {values.fees}
@@ -175,12 +177,12 @@ const Courses: React.FC = () => {
                   </div>
                   <div className="flex items-center justify-start gap-3 pt-2">
                     <div className="flex items-center text-slate-500">
-                      <FaStar className="text-sky-700 text-xl mr-1" />
+                      <FaStar className="text-yellow-400 text-xl mr-1" />
                       <span className="font-semibold">{values.reviews}</span>
                       (45)
                     </div>
                     <div className="flex items-center text-slate-500">
-                      <FaHeart className="text-fuchsia-400 text-xl mr-1" />
+                      <FaHeart className="text-red-400 text-xl mr-1" />
                       <span className="font-semibold">{values.likes}</span>
                     </div>
                     <div className="flex items-center text-slate-500">
@@ -194,7 +196,7 @@ const Courses: React.FC = () => {
                     </div>
                   </div>
                   <div className="absolute left-[50%] bottom-0 -translate-x-[50%] px-6 py-4 w-full flex flex-col items-center">
-                    <Button className="uppercase font-semibold border-[1px] border-teal-700 text-teal-700">
+                    <Button className="uppercase font-semibold border-[1px] border-sky-600 text-sky-600">
                       Take course
                     </Button>
                   </div>

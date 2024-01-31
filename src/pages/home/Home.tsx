@@ -215,21 +215,21 @@ const Home: React.FC = () => {
             data-aos="fade-left"
           >
             <div className="flex items-center gap-2">
-              <RiGraduationCapFill className="text-[36px] text-[#00A399]" />
+              <RiGraduationCapFill className="text-[36px] text-[#0284c7]" />
               <div className="flex flex-col">
                 <h1 className="text-slate-800 text-2xl font-bold">297</h1>
                 <h1 className="text-slate-500">Trainees</h1>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <FaUsers className="text-[36px] text-[#00A399]" />
+              <FaUsers className="text-[36px] text-[#0284c7]" />
               <div className="flex flex-col">
                 <h1 className="text-slate-800 text-2xl font-bold">15</h1>
                 <h1 className="text-slate-500">Mentors</h1>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <MdPlayLesson className="text-[36px] text-[#00A399]" />
+              <MdPlayLesson className="text-[36px] text-[#0284c7]" />
               <div className="flex flex-col">
                 <h1 className="text-slate-800 text-2xl font-bold">96</h1>
                 <h1 className="text-slate-500">Courses</h1>
@@ -263,16 +263,16 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div
-          className="flex flex-wrap content-center pt-16 w-fit mx-auto gap-2"
+          className="flex flex-wrap content-center pt-16 max-w-[900px] w-fit mx-auto gap-2"
           data-aos="fade-up"
         >
           {benefits.map((values, idx) => {
             return (
               <div
-                className="group flex flex-col relative items-center justify-center gap-5 w-[250px] mx-auto mb-10 bg-teal-600/0 rounded-xl p-4 cursor-default hover:bg-teal-600/80 hover:shadow-xl ease-in transition-all duration-200  hover:scale-105"
+                className="group flex flex-col relative items-center justify-center gap-5 w-[250px] mx-auto mb-10 bg-sky-400/0 rounded-xl p-4 cursor-default hover:bg-sky-400/80 hover:shadow-xl ease-in transition-all duration-200  hover:scale-105"
                 key={idx}
               >
-                <div className="w-[80px] h-[80px] absolute left-[50%] -top-[25%] -translate-x-[50%] bg-sky-600/0 group-hover:bg-teal-600 crazy-round flex flex-col justify-center items-center  ease-in transition-all duration-500">
+                <div className="w-[80px] h-[80px] absolute left-[50%] -top-[25%] -translate-x-[50%] bg-sky-600/0 group-hover:bg-sky-400 group-hover:-top-[30%] crazy-round flex flex-col justify-center items-center  ease-in transition-all duration-500">
                   <img
                     src={values.img}
                     alt=""
@@ -283,7 +283,7 @@ const Home: React.FC = () => {
                   <h1 className="text-2xl font-semibold text-slate-800 group-hover:text-zinc-100 capitalize my-1">
                     {values.title}
                   </h1>
-                  <h1 className="text-lg text-zinc-700 group-hover:text-zinc-200">
+                  <h1 className="text-lg text-zinc-700 group-hover:text-zinc-700">
                     {values.descr}
                   </h1>
                 </div>
@@ -292,7 +292,7 @@ const Home: React.FC = () => {
           })}
         </div>
         <div
-          className="max-h-[1000px] w-full relative overflow-hidden"
+          className="max-h-[1000px] md:w-full w-[90%] mx-auto relative overflow overflow-y-auto"
           style={{
             backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${library})`,
             backgroundRepeat: "no-repeat",
@@ -310,18 +310,20 @@ const Home: React.FC = () => {
             </h1>
             <div className="flex-grow border-t border-gray-400"></div>
           </div>
-          <div className="flex flex-wrap gap-3 justify-center content-center w-fit mx-auto min-h-screen p-2">
+          <div
+            className="flex flex-wrap gap-3 justify-center content-center w-fit mx-auto min-h-screen p-2"
+            data-aos={"fade-up"}
+          >
             {array?.map((values, idx) => {
               return (
                 <div
                   className="group h-60 w-60 [perspective:1000px]"
                   key={idx + 1}
-                  data-aos={"fade-up"}
                 >
                   <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(-180deg)]">
                     <div className="absolute inset-0">
-                      <div className="w-full h-full flex flex-col gap-5 items-center justify-center bg-white/15 border border-teal-600 rounded-xl">
-                        <div className="h-[80px] w-[80px] bg-teal-600 p-3  crazy-round">
+                      <div className="w-full h-full flex flex-col gap-5 items-center justify-center bg-white/15 border border-sky-400 rounded-xl">
+                        <div className="h-[80px] w-[80px] bg-sky-400 p-3  crazy-round">
                           <img
                             src={values.img}
                             alt=""
@@ -333,7 +335,7 @@ const Home: React.FC = () => {
                         </h1>
                       </div>
                     </div>
-                    <div className="absolute inset-0 h-full w-full rounded-xl bg-teal-600/80 px-12 text-center text-slate-200 [transform:rotateX(-180deg)] [backface-visibility:hidden] cursor-default">
+                    <div className="absolute inset-0 h-full w-full rounded-xl bg-sky-400/80 px-12 text-center text-slate-200 [transform:rotateX(-180deg)] [backface-visibility:hidden] cursor-default">
                       <div className="flex flex-col justify-center h-full gap-3">
                         <h1 className="text-lg flex items-center gap-2">
                           <MdPlayLesson className="text-[20px] text-slate-700" />
